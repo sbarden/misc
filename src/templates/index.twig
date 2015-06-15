@@ -1,13 +1,14 @@
 {% include 'header.twig' %}
 
-<p><a href="{{ app.request.baseUrl ~ '/add' }}" class="btn"><b class="icon-pencil"></b> Share Your Thought</a></p>
+{{ style_overrides }}
+
+<img src="http://blog.nola.com/michaelkleinschrodt/2008/07/large_WarGamesScene.jpg" alt="war games" >
 
 <div class="hero-unit">
     <div class="row-fluid">
         {%  for thought in thoughts %}
             <blockquote>
                 <p>{{ thought.message }}</p>
-                <small>{{ thought.author }}</small>
             </blockquote>
             <hr>
         {%  endfor %}
