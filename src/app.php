@@ -22,7 +22,7 @@ $app['db'] = $app->share(function ($app) {
 
 // Handle the index page
 $app->match('/', function () use ($app) {
-    $query = $app['db']->prepare("SELECT message, author FROM {$app['db.table']}");
+    $query = $app['db']->prepare("SELECT message FROM {$app['db.table']}");
     $thoughts = $query->execute() ? $query->fetchAll(PDO::FETCH_ASSOC) : array();
 
     return $app['twig']->render('index.twig', array(
