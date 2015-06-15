@@ -1,25 +1,19 @@
 <?php
-
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../db-connect.php';
-
 
 use Silex\Application;
 use Silex\Provider\TwigServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
-
-
 
 // Setup the application
 $app = new Application();
 
 $app['debug'] = false;
 
-
 $app->register(new TwigServiceProvider, array(
     'twig.path' => __DIR__ . '/templates',
 ));
-
 
 // Setup the database
 $app['db.table'] = DB_TABLE;
@@ -37,6 +31,7 @@ $app->match('/', function () use ($app) {
         'title'    => 'What would you like to play?',
         'thoughts' => $thoughts,
         'style'    => $style,
-
     ));
 });
+
+$app->run();
